@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+
+{% block content %}
+  <header>
+    <img src="{{ user.icon }}">
+    <div>
+      <h1>{{ user.firstName }}'s Playlists</h1>
+    </div>
+  </header>
+  <div class="list">
+    {% for p in playlists.owned %}
+      <a href="{{ url_for('playlist', username=user.username, playlist=p.key)}}">
+        <h2>{{ p.name }}</h2>
+      </a>
+    {% endfor %}
+    {% for p in playlists.collab %}
+      <a href="{{ url_for('playlist', username=user.username, playlist=p.key)}}">
+        <h2>{{ p.name }}</h2>
+      </a>
+    {% endfor %}
+  </div>
+{% endblock %}

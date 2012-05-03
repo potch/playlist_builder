@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+
+{% block content %}
+  <header>
+    <img src="{{ playlist.icon }}">
+    <div>
+      <h1>{{ playlist.name }}</h1>
+    </div>
+  </header>
+  <div class="list">
+    <a href="{{ url_for('playlist_build', key=playlist.key) }}">
+      <h2>Build&hellip;</h2>
+    </a>
+    {% for t in playlist.tracks %}
+      <a href="/playlist/{{ t.key }}">
+        <h2>{{ t.name }}</h2>
+        <b>{{ t.artist }} &mdash; {{ t.album }}</b>
+    {% endfor %}
+  </div>
+{% endblock %}
